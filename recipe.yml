@@ -1,0 +1,25 @@
+name: 'Gin Admin Experience'
+description: 'Installs and configures the Gin admin theme and supporting modules.'
+type: 'Site'
+
+install:
+  # Install Claro as it is a dependency of Gin, but don't import config.
+  - claro
+  # Install Toolbar as it is a dependency of Gn Toolbar.
+  - toolbar
+  # Install Gin theme and base modules that extend it.
+  - gin
+  - gin_login
+  - gin_toolbar
+
+config:
+  import:
+    # Import all of Gin and Gin Login's config.
+    # Gin Toolbar does not have any config.
+    gin: '*'
+    gin_login: '*'
+  actions:
+    # Update the admin theme to Gin in Theme settings.
+    system.theme:
+      simple_config_update:
+        admin: 'gin'
