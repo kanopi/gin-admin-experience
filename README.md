@@ -19,7 +19,7 @@ If you have our Docksal command in your project, `fin recipe-apply gin-admin-exp
 
 To unpack this recipe's dependencies to your site's composer.json, in the root of your project run:
 
-c`omposer unpack kanopi/gin-admin-experience`
+`composer unpack kanopi/gin-admin-experience`
 
 If you have our Docksal command in your project, `fin recipe-unpack kanopi/gin-admin-experience`
 
