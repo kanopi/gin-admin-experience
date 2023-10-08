@@ -3,9 +3,12 @@ description: 'Installs and configures the Gin admin theme and supporting modules
 type: 'Site'
 
 install:
+  # Install core dependencies.
+  - system
+  - help
   # Install Claro as it is a dependency of Gin, but don't import config.
   - claro
-  # Install Toolbar as it is a dependency of Gn Toolbar.
+  # Install Toolbar as it is a dependency of Gin Toolbar.
   - toolbar
   # Install Gin theme and base modules that extend it.
   - gin
