@@ -11,6 +11,7 @@
         }
     ],
     "require": {
+        "drupal/admin_toolbar": "*",
         "drupal/gin": "*",
         "drupal/gin_login": "*",
         "drupal/gin_toolbar": "*"

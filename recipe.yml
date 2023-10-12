@@ -4,12 +4,15 @@ type: 'Site'
 
 install:
   # Install core dependencies.
-  - system
+  - config
   - help
   # Install Claro as it is a dependency of Gin, but don't import config.
   - claro
   # Install Toolbar as it is a dependency of Gin Toolbar.
   - toolbar
+  - admin_toolbar
+  - admin_toolbar_search
+  - admin_toolbar_tools
   # Install Gin theme and base modules that extend it.
   - gin
   - gin_login
@@ -17,6 +20,10 @@ install:
 
 config:
   import:
+    # Import all of Admin Toolbar's modules config.
+    admin_toolbar: '*'
+    admin_toolbar_search: '*'
+    admin_toolbar_tools: '*'
     # Import all of Gin and Gin Login's config.
     # Gin Toolbar does not have any config.
     gin:
@@ -30,6 +37,31 @@ config:
       - block.block.gin_primary_local_tasks
     gin_login: '*'
   actions:
+    # Set and unset Gin blocks.
+    block.block.gin_admin:
+      simple_config_update:
+        status: false
+    block.block.gin_branding:
+      simple_config_update:
+        status: false
+    block.block.gin_local_actions:
+      simple_config_update:
+        region: content
+        weight: -10
+    block.block.gin_local_tasks:
+      simple_config_update:
+        status: false
+    block.block.gin_page_title:
+      simple_config_update:
+        region: header
+        weight: -10
+    block.block.gin_primary_local_tasks:
+      simple_config_update:
+        region: header
+        weight: -5
+    block.block.gin_tools:
+      simple_config_update:
+        status: false
     # Update the admin theme to Gin in Theme settings.
     node.settings:
       simple_config_update:
