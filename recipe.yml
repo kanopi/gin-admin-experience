@@ -24,8 +24,8 @@ config:
     admin_toolbar: '*'
     admin_toolbar_search: '*'
     admin_toolbar_tools: '*'
-    # Import all of Gin and Gin Login's config.
-    # Gin Toolbar does not have any config.
+    # Import all but gin_secondary_local_tasks block. We add secondary in the
+    # primary block as an options below.
     gin:
       - gin.settings
       - block.block.gin_breadcrumbs
@@ -35,22 +35,102 @@ config:
       - block.block.gin_messages
       - block.block.gin_page_title
       - block.block.gin_primary_local_tasks
+    # Import all Gin Login config. Gin Toolbar does not have any.
     gin_login: '*'
   actions:
-    # Set and unset Gin blocks.
+    # Drupal core's block_theme_initialize() makes a new theme get the same
+    # blocks as the current default theme (system.theme:default).
+    # Because of this, we need to unset some blocks that are created by either
+    # of the default themes in Minimal (Stark) and Standard (Olivero). I have
+    # Also done this for Claro as it it the only other core theme that could be
+    # set as a default in core.
+    #
+    # Using the ensure_exists config action allows us to set these optionally
+    # and will not fail if those blocks do not exist.
+    #
+    # Unset Minimal blocks.
     block.block.gin_admin:
+      ensure_exists:
+        plugin: 'system_menu_block:admin'
       simple_config_update:
         status: false
     block.block.gin_branding:
+      ensure_exists:
+        plugin: 'system_branding_block'
       simple_config_update:
         status: false
+    block.block.gin_local_tasks:
+      ensure_exists:
+        plugin: 'local_tasks_block'
+      simple_config_update:
+        status: false
+    block.block.gin_tools:
+      ensure_exists:
+        plugin: 'system_menu_block:tools'
+      simple_config_update:
+        status: false
+    # Unset Claro blocks.
+    block.block.claro_secondary_local_tasks:
+      ensure_exists:
+        plugin: 'local_tasks_block'
+      simple_config_update:
+        status: false
+    # Unset Olivero blocks.
+    block.block.gin_account_menu:
+      ensure_exists:
+        plugin: 'system_menu_block:account'
+      simple_config_update:
+        status: false
+    block.block.gin_book_navigation:
+      ensure_exists:
+        plugin: 'book_navigation'
+      simple_config_update:
+        status: false
+    block.block.gin_main_menu:
+      ensure_exists:
+        plugin: 'system_menu_block:main'
+      simple_config_update:
+        status: false
+    block.block.gin_powered:
+      ensure_exists:
+        plugin: 'system_powered_by_block'
+      simple_config_update:
+        status: false
+    block.block.gin_primary_admin_actions:
+      ensure_exists:
+        plugin: 'local_actions_block'
+      simple_config_update:
+        status: false
+    block.block.gin_search_form_narrow:
+      ensure_exists:
+        plugin: 'search_form_block'
+      simple_config_update:
+        status: false
+    block.block.gin_search_form_wide:
+      ensure_exists:
+        plugin: 'search_form_block'
+      simple_config_update:
+        status: false
+    block.block.gin_secondary_local_tasks:
+      ensure_exists:
+        plugin: 'local_tasks_block'
+      simple_config_update:
+        status: false
+    block.block.gin_site_branding:
+      ensure_exists:
+        plugin: 'system_branding_block'
+      simple_config_update:
+        status: false
+    block.block.gin_syndicate:
+      ensure_exists:
+        plugin: 'node_syndicate_block'
+      simple_config_update:
+        status: false
+    # Gin blocks that we want to adjust placement.
     block.block.gin_local_actions:
       simple_config_update:
         region: content
         weight: -10
-    block.block.gin_local_tasks:
-      simple_config_update:
-        status: false
     block.block.gin_page_title:
       simple_config_update:
         region: header
@@ -59,9 +139,15 @@ config:
       simple_config_update:
         region: header
         weight: -5
-    block.block.gin_tools:
-      simple_config_update:
-        status: false
+        settings.secondary: true
+    # Gin blocks that we don't need to alter.
+    # Leaving them here for easy access if we ever do want to.
+    #
+    # block.block.gin_breadcrumbs
+    # block.block.gin_content
+    # block.block.gin_help
+    # block.block.gin_messages
+    #
     # Update the admin theme to Gin in Theme settings.
     node.settings:
       simple_config_update:
