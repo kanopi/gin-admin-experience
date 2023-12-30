@@ -59,6 +59,7 @@ config:
       simple_config_update:
         region: header
         weight: -5
+        settings.secondary: true
     block.block.gin_tools:
       simple_config_update:
         status: false
