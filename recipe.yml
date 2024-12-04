@@ -1,7 +1,6 @@
 name: 'Gin Admin Experience'
 description: 'Installs and configures the Gin admin theme and supporting modules.'
 type: 'Site'
-
 install:
   # Install core dependencies.
   - config
@@ -17,8 +16,9 @@ install:
   - gin
   - gin_login
   - gin_toolbar
-
 config:
+  # Allow config import to continue if config already exists.
+  strict: false
   import:
     # Import all of Admin Toolbar's modules config.
     admin_toolbar: '*'
@@ -39,34 +39,39 @@ config:
   actions:
     # Set and unset Gin blocks.
     block.block.gin_admin:
-      simple_config_update:
-        status: false
+      # @TODO Blocks should have setStatus config action.
+      set:
+        property_name: status
+        value: false
     block.block.gin_branding:
-      simple_config_update:
-        status: false
+      set:
+        property_name: status
+        value: false
     block.block.gin_local_actions:
-      simple_config_update:
-        region: content
-        weight: -10
+      setRegion: content
+      setWeight: -10
     block.block.gin_local_tasks:
-      simple_config_update:
-        status: false
+      set:
+        property_name: status
+        value: false
     block.block.gin_page_title:
-      simple_config_update:
-        region: header
-        weight: -10
+      setRegion: header
+      setWeight: -10
     block.block.gin_primary_local_tasks:
-      simple_config_update:
-        region: header
-        weight: -5
+      setRegion: header
+      setWeight: -5
+      # @TODO Blocks should have setSetting(s) config action.
+      # We shouldn't use simpleConfigUpdate here as this is not simple config.
+      simpleConfigUpdate:
         settings.secondary: true
     block.block.gin_tools:
-      simple_config_update:
-        status: false
+      set:
+        property_name: status
+        value: false
     # Update the admin theme to Gin in Theme settings.
     node.settings:
-      simple_config_update:
+      simpleConfigUpdate:
         use_admin_theme: true
     system.theme:
-      simple_config_update:
+      simpleConfigUpdate:
         admin: gin
