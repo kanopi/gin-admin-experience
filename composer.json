@@ -1,7 +1,6 @@
 {
     "name": "kanopi/gin-admin-experience",
     "description": "Installs and configures the Gin admin theme and supporting base modules.",
-    "keywords": ["recipe", "Drupal recipes", "drupal recipe"],
     "type": "drupal-recipe",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -11,9 +10,10 @@
         }
     ],
     "require": {
-        "drupal/admin_toolbar": "*",
-        "drupal/gin": "*",
-        "drupal/gin_login": "*",
-        "drupal/gin_toolbar": "*"
+        "drupal/admin_toolbar": "^3.5",
+        "drupal/core": ">=10.4",
+        "drupal/gin": "^3.0@RC",
+        "drupal/gin_login": "^2.1",
+        "drupal/gin_toolbar": "^1.0@RC"
     }
 }
