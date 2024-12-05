@@ -39,21 +39,14 @@ config:
   actions:
     # Set and unset Gin blocks.
     block.block.gin_admin:
-      # @TODO Blocks should have setStatus config action.
-      set:
-        property_name: status
-        value: false
+      setStatus: false
     block.block.gin_branding:
-      set:
-        property_name: status
-        value: false
+      setStatus: false
     block.block.gin_local_actions:
       setRegion: content
       setWeight: -10
     block.block.gin_local_tasks:
-      set:
-        property_name: status
-        value: false
+      setStatus: false
     block.block.gin_page_title:
       setRegion: header
       setWeight: -10
@@ -65,9 +58,7 @@ config:
       simpleConfigUpdate:
         settings.secondary: true
     block.block.gin_tools:
-      set:
-        property_name: status
-        value: false
+      setStatus: false
     # Update the admin theme to Gin in Theme settings.
     node.settings:
       simpleConfigUpdate:
