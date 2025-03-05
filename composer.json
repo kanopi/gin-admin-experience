@@ -10,10 +10,9 @@
         }
     ],
     "require": {
-        "drupal/admin_toolbar": "^3.5",
         "drupal/core": ">=10.4",
         "drupal/gin": "^3.0@RC",
         "drupal/gin_login": "^2.1",
-        "drupal/gin_toolbar": "^1.0@RC"
+        "drupal/navigation": "^11.1"
     }
 }

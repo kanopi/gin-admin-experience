@@ -7,23 +7,20 @@ install:
   - help
   # Install Claro as it is a dependency of Gin, but don't import config.
   - claro
-  # Install Toolbar as it is a dependency of Gin Toolbar.
-  - toolbar
-  - admin_toolbar
-  - admin_toolbar_search
-  - admin_toolbar_tools
   # Install Gin theme and base modules that extend it.
   - gin
   - gin_login
-  - gin_toolbar
+  # Install Layout Builder as it is ia dependency of Navigation.
+  - layout_builder
+  # Install Navigation Module.
+  - navigation
 config:
   # Allow config import to continue if config already exists.
   strict: false
   import:
-    # Import all of Admin Toolbar's modules config.
-    admin_toolbar: '*'
-    admin_toolbar_search: '*'
-    admin_toolbar_tools: '*'
+    # Import all of Navigation modules config.
+    navigation: '*'
+    layout_builder: '*'
     # Import all of Gin and Gin Login's config.
     # Gin Toolbar does not have any config.
     gin:
