@@ -12,8 +12,9 @@ install:
   - gin_login
   # Install Layout Builder as it is a dependency of Navigation.
   - layout_builder
-  # Install Navigation Module.
+  # Install Navigation Modules.
   - navigation
+  - navigation_extra_tools
 config:
   # Allow config import to continue if config already exists.
   strict: false
