@@ -12,7 +12,6 @@
     "require": {
         "drupal/core": ">=10.4",
         "drupal/gin": "^3.0@RC",
-        "drupal/gin_login": "^2.1",
-        "drupal/navigation": "^11.1"
+        "drupal/gin_login": "^2.1"
     }
 }

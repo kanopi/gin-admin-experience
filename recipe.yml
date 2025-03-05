@@ -10,7 +10,7 @@ install:
   # Install Gin theme and base modules that extend it.
   - gin
   - gin_login
-  # Install Layout Builder as it is ia dependency of Navigation.
+  # Install Layout Builder as it is a dependency of Navigation.
   - layout_builder
   # Install Navigation Module.
   - navigation
