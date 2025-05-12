@@ -22,7 +22,6 @@ config:
     # Import all of Navigation modules config.
     navigation: '*'
     # Import all of Gin and Gin Login's config.
-    # Gin Toolbar does not have any config.
     gin:
       - gin.settings
       - block.block.gin_breadcrumbs
