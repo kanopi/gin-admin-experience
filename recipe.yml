@@ -3,6 +3,7 @@ description: 'Installs and configures the Gin admin theme and supporting modules
 type: 'Site'
 install:
   # Install core dependencies.
+  - block
   - config
   - help
   # Install Claro as it is a dependency of Gin, but don't import config.
@@ -22,39 +23,9 @@ config:
     # Import all of Navigation modules config.
     navigation: '*'
     # Import all of Gin and Gin Login's config.
-    gin:
-      - gin.settings
-      - block.block.gin_breadcrumbs
-      - block.block.gin_content
-      - block.block.gin_help
-      - block.block.gin_local_actions
-      - block.block.gin_messages
-      - block.block.gin_page_title
-      - block.block.gin_primary_local_tasks
+    gin: '*'
     gin_login: '*'
   actions:
-    # Set and unset Gin blocks.
-    block.block.gin_admin:
-      setStatus: false
-    block.block.gin_branding:
-      setStatus: false
-    block.block.gin_local_actions:
-      setRegion: content
-      setWeight: -10
-    block.block.gin_local_tasks:
-      setStatus: false
-    block.block.gin_page_title:
-      setRegion: header
-      setWeight: -10
-    block.block.gin_primary_local_tasks:
-      setRegion: header
-      setWeight: -5
-      # @TODO Blocks should have setSetting(s) config action.
-      # We shouldn't use simpleConfigUpdate here as this is not simple config.
-      simpleConfigUpdate:
-        settings.secondary: true
-    block.block.gin_tools:
-      setStatus: false
     # Update the admin theme to Gin in Theme settings.
     node.settings:
       simpleConfigUpdate:
