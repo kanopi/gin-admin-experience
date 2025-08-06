@@ -16,6 +16,9 @@ If you need to configure your project to use recipes, please see the [Getting St
 ### For Drupal 10, 11.0/1
 
 For Drupal 10 and 11.0/1 recipe can only be applied when Stark is the admin theme as set by the minimal profile if you are starting a new site.
+Use the 1.x release for that.
+
+`composer require kanopi/gin-admin-experience:^1`
 
 ## Applying this Recipe
 
